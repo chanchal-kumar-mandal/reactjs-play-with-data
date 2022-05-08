@@ -1,7 +1,13 @@
 ## Description
 Data manupulation and representation On React JS Function Based Components. 
+1. Count Data Representation
+2. Todo List Data Representation
+3. Child To Parent Data Representation
+4. Static Data Representation
+5. API Data Representation
+6. Sortable Data Representation
 
-## Live App: https://chanchal-kumar-mandal.github.io/reactjs-frontend-gpt3/
+## Live App: https://chanchal-kumar-mandal.github.io/reactjs-play-with-data/
 ## Demo Screenshots
 
 ## Requirements
