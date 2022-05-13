@@ -31,8 +31,10 @@ const ApiData = () => {
                 <h3>API Data Representation</h3>
                 <div className="table_content">
                     <table>
-                        <tbody>
+                        <thead>
                             <tr><th>Nation</th><th>Population</th><th>Year</th></tr>
+                        </thead>
+                        <tbody>
                             {items.map((item) => (
                                 <tr key={item.Year}><td>{item.Nation}</td><td>{item.Population}</td><td>{item.Year}</td></tr>
                             ))}

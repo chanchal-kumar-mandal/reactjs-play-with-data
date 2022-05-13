@@ -1,36 +1,36 @@
 import React, { useState, useMemo } from 'react';
 
 //Custom hook
-const useSortableData = (items, config = null) => {
-    const [sortConfig, setSortConfig] = useState(config);
+const useSortableData = (items, fieldOrder = null) => {
+    const [sortFieldOrder, setSortFieldOrder] = useState(fieldOrder);
 
-    // Using useMemo() to avoin un necessary re render
+    const requestSort = (field) => {
+        let order = 'ascending';
+        if (sortFieldOrder && sortFieldOrder.field === field && sortFieldOrder.order === 'ascending') {
+            order = 'descending';
+        }
+        setSortFieldOrder({ field, order });
+    };
+
+    // Using useMemo() to avoid un necessary re render for items, sortFieldOrder change
     const sortedItems = useMemo(() => {
         let sortableItems = [...items];
         
-        if (sortConfig !== null) {
+        if (sortFieldOrder !== null) {
             sortableItems.sort((a, b) => {
-                if (a[sortConfig.key] < b[sortConfig.key]) {
-                    return sortConfig.direction === 'ascending' ? -1 : 1;
+                if (a[sortFieldOrder.field] < b[sortFieldOrder.field]) {
+                    return sortFieldOrder.order === 'ascending' ? -1 : 1;
                 }
-                if (a[sortConfig.key] > b[sortConfig.key]) {
-                    return sortConfig.direction === 'ascending' ? 1 : -1;
+                if (a[sortFieldOrder.field] > b[sortFieldOrder.field]) {
+                    return sortFieldOrder.order === 'ascending' ? 1 : -1;
                 }
                 return 0;
             });
         }
         return sortableItems;
-    }, [items, sortConfig]);
+    }, [items, sortFieldOrder]);
 
-    const requestSort = (key) => {
-        let direction = 'ascending';
-        if (sortConfig && sortConfig.key === key && sortConfig.direction === 'ascending') {
-            direction = 'descending';
-        }
-        setSortConfig({ key, direction });
-    };
-
-    return { items: sortedItems, requestSort, sortConfig };
+    return { sortFieldOrder, requestSort, items: sortedItems };
 };
 
 const SortData = () => {
@@ -45,11 +45,11 @@ const SortData = () => {
         { id: 7, name: 'Fancy French', price: 99, stock: 12 },
     ];
 
-    const { items, requestSort, sortConfig } = useSortableData(products);
+    const { sortFieldOrder, requestSort, items } = useSortableData(products);
     
-    const getClassNamesFor = (name) => {
-        if (!sortConfig) return;
-        return sortConfig.key === name ? sortConfig.direction : undefined;
+    const getClassNamesFor = (fieldName) => {
+        if (!sortFieldOrder) return;
+        return sortFieldOrder.field === fieldName ? sortFieldOrder.order : undefined;
     };
 
     return (
