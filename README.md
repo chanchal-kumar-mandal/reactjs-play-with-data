@@ -1,7 +1,7 @@
 ## Description
 Data representation and manupulation in React JS Function Based Components. 
 
-1. Count, self increasing seconds Data Representation
+1. Count, Self Increasing Seconds Data Representation
 2. Todo List Data Representation
 3. Child To Parent Data Representation
 4. Static Data Representation
