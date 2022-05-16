@@ -14,8 +14,7 @@ Data representation and manupulation in React JS Function Based Components.
 
 ### Frontend UI:
 
-<img width="1440" alt="Screen Shot 2022-05-15 at 8 43 22 PM" src="https://user-images.githubusercontent.com/14269798/168513201-f96993af-8e1d-448f-9ae7-df13823e5771.png">
-
+<img width="1440" alt="Screen Shot 2022-05-16 at 12 38 00 PM" src="https://user-images.githubusercontent.com/14269798/168538192-1572c9db-76a8-43e3-8cea-b56f1917dfbd.png">
 
 ### CountData:
 
