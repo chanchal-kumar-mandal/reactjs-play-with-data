@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
 const ApiData = () => {
-
     const [error, setError] = useState(null);
     const [isLoded, setIsLoded] = useState(false);
     const [items, setItems] = useState([]);

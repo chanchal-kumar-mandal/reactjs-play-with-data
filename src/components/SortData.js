@@ -3,7 +3,6 @@ import React, { useState, useMemo } from 'react';
 //Custom hook
 const useSortableData = (items, fieldOrder = null) => {
     const [sortFieldOrder, setSortFieldOrder] = useState(fieldOrder);
-
     const requestSort = (field) => {
         let order = 'ascending';
         if (sortFieldOrder && sortFieldOrder.field === field && sortFieldOrder.order === 'ascending') {
@@ -34,7 +33,6 @@ const useSortableData = (items, fieldOrder = null) => {
 };
 
 const SortData = () => {
-
     const products = [
         { id: 1, name: 'Cheese', price: 4.9, stock: 20 },
         { id: 2, name: 'Milk', price: 1.9, stock: 32 },
@@ -44,9 +42,7 @@ const SortData = () => {
         { id: 6, name: 'Sour Cream ', price: 2.9, stock: 86 },
         { id: 7, name: 'Fancy French', price: 99, stock: 12 },
     ];
-
     const { sortFieldOrder, requestSort, items } = useSortableData(products);
-    
     const getClassNamesFor = (fieldName) => {
         if (!sortFieldOrder) return;
         return sortFieldOrder.field === fieldName ? sortFieldOrder.order : undefined;
@@ -72,11 +68,7 @@ const SortData = () => {
                     </thead>
                     <tbody>
                         {items.map((item) => (
-                            <tr key={item.id}>
-                                <td>{item.name}</td>
-                                <td>${item.price}</td>
-                                <td>{item.stock}</td>
-                            </tr>
+                            <tr key={item.id}><td>{item.name}</td><td>${item.price}</td><td>{item.stock}</td></tr>
                         ))}
                     </tbody>
                 </table>

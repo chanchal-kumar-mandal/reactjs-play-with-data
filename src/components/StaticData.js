@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 const StaticData = () => {
-
     const people = [
         { name: 'Alan Turing', role: 'Designer', id: 1 },
         { name: 'Ada Lovelace', role: 'Developer', id: 2 },
