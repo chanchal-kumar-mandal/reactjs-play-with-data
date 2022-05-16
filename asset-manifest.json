@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/reactjs-play-with-data/static/css/main.86c90883.css",
+    "main.js": "/reactjs-play-with-data/static/js/main.2bc87fed.js",
+    "index.html": "/reactjs-play-with-data/index.html",
+    "main.86c90883.css.map": "/reactjs-play-with-data/static/css/main.86c90883.css.map",
+    "main.2bc87fed.js.map": "/reactjs-play-with-data/static/js/main.2bc87fed.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.86c90883.css",
+    "static/js/main.2bc87fed.js"
+  ]
+}
