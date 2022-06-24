@@ -1,28 +1,35 @@
 import React, { useState, useEffect } from 'react';
 
-const ApiData = () => {
-    const [error, setError] = useState(null);
-    const [isLoded, setIsLoded] = useState(false);
-    const [items, setItems] = useState([]);
+// use custom hooks
+const useApiData = () => {
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [items, setItems] = useState([]);
 
-    useEffect(() => {
-        fetch("https://datausa.io/api/data?drilldowns=Nation&measures=Population")
-        .then(res => res.json())
-        .then( 
-            (result) => {
-                setIsLoded(true);
-                setItems(result.data);
-            },
-            (error) => {
-                setIsLoded(false);
-                setError(error);
-            }
-        )
-    }, []);
+  useEffect(() => {
+    fetch('https://datausa.io/api/data?drilldowns=Nation&measures=Population')
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          setIsLoaded(true);
+          setItems(result.data);
+        },
+        (error) => {
+          setIsLoaded(false);
+          setError(error);
+        }
+      );
+  }, []);
+
+  return { error, isLoaded, items };
+};
+
+const ApiData = () => {
+    const { error, isLoaded, items } = useApiData();
 
     if(error){
         return <div>{error.message}</div>
-    } else if(!isLoded) {
+    } else if(!isLoaded) {
         return <div>Loading...</div>
     } else {
         return (
