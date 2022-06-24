@@ -75,4 +75,4 @@ const StaticData = () => {
     )
 }
 
-export default StaticData
+export default StaticData;
