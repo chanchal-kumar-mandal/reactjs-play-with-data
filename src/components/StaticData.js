@@ -1,5 +1,21 @@
 import React, { useState } from 'react';
 
+const Child = ({ data }) => {
+  console.log(data);
+  return (
+    <>
+      <li>{data.name}</li>
+      <ul>
+        {data.items.map((item, index) => (
+          <Child key={index} data={item} />
+        ))}
+      </ul>
+    </>
+  );
+};
+
+export default Child;
+
 const StaticData = () => {
     const people = [
         { name: 'Alan Turing', role: 'Designer', id: 1 },
@@ -7,6 +23,35 @@ const StaticData = () => {
         { name: 'Barbara Liskov', role: 'Manager', id: 3 },
         { name: 'Mary Poppendieck', role: 'Director', id: 4 }
     ];
+    
+    const posts = {
+        name: 'Level 1',
+        items: [
+        {
+            name: 'Level 2',
+            items: [
+            {
+                name: 'Level 3',
+                items: [
+                {
+                    name: 'Level 4',
+                    items: [],
+                },
+                ],
+            },
+            {
+                name: 'Level 3A',
+                items: [
+                {
+                    name: 'Level 4A',
+                    items: [],
+                },
+                ],
+            },
+            ],
+        },
+        ],
+    };
     
     const[ searched, setSearched ] = useState("");
 
@@ -23,7 +68,9 @@ const StaticData = () => {
             .map( (man) => (
                 <p key={man.id}><b>Id:</b> {man.id} <b>Name:</b> {man.name} <b>Role:</b> {man.role} </p>
             ))}
-
+            
+            <h3>Multilevel Data Representation</h3>
+            <Child data={posts} />
         </>
     )
 }
